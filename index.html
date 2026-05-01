@@ -278,6 +278,7 @@
     const resetBtn = document.getElementById("reset");
     const copyBtn = document.getElementById("copy");
     const sampleBtn = document.getElementById("sample");
+    const storageKey = "mov2st-time-sum-input";
 
     const sample = [
       "00:25:12",
@@ -367,11 +368,13 @@
     input.addEventListener("input", render);
     resetBtn.addEventListener("click", () => {
       input.value = "";
+      localStorage.removeItem(storageKey);
       input.focus();
       render();
     });
     sampleBtn.addEventListener("click", () => {
       input.value = sample;
+      localStorage.setItem(storageKey, input.value);
       render();
     });
     copyBtn.addEventListener("click", async () => {
@@ -382,6 +385,10 @@
       }, 900);
     });
 
+    input.value = localStorage.getItem(storageKey) || "";
+    input.addEventListener("input", () => {
+      localStorage.setItem(storageKey, input.value);
+    });
     render();
   </script>
 </body>

@@ -1,0 +1,10 @@
+{
+  "name": "screen-time-counter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser app for screen capture and AFK-style screen time recognition.",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check app.js && node --check server.js"
+  }
+}
